@@ -11,7 +11,13 @@ internal class CustomScanner {
     
     var scanLocation: Int {
         get { return scanner.scanLocation }
-        set { scanner.scanLocation = newValue }
+        set {
+            guard !self.isAtEnd else {
+                return
+            }
+
+            scanner.scanLocation = newValue
+        }
     }
     var isAtEnd: Bool { return scanLocation == length }
     
